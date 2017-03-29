@@ -14,7 +14,14 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.SET_ALWAYS_FINISH" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    
+
+    <!-- 访问精确位置的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 读写存储卡的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 读取电话状态的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
 	<!-- 授予程序访问振动器的权限 -->
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	<!-- 授予程序访问系统开机事件的权限 -->
@@ -34,7 +41,13 @@
             android:theme="@style/MyLoginAppTheme">
         </activity>
 
-        <receiver android:name="zyb.org.login.WifiInfoReceiver">
+        <activity
+            android:name="zyb.org.setClassRoomSite.SetClassroomSite"
+            android:label="@string/set_classroom_site"
+            android:theme="@style/MyLoginAppTheme">
+        </activity>
+
+        <receiver android:name="zyb.org.login.NetInfoReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />

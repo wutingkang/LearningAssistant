@@ -12,7 +12,10 @@
     <string name="message_set">消息设置</string>
     <string name="quiet">开启上课自动静音</string>  
     <string name="remind">开启课前振动提醒</string>
-    <string name="about_app">软件相关</string> 
+    <string name="in_classroom_quiet">开启进入教室静音</string>
+    <string name="set_in_classroom_quiet">进入教室自动静音设置</string>
+    <string name="set_classroom_site">设置教室位置</string>
+    <string name="about_app">软件相关</string>
     <string name="revision">版本支持</string>  
     <string name="us">关于作者</string>                   
     <string name="login">登录校网</string>

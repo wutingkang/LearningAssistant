@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                         btnLogin.setText("登录" + wifiInfo.getSSID() + "中...");
 
                         //也可以确定未登录再发送登录请求，但判断又要发net请求，还不如直接发送登录请求
-                        new Thread(WifiInfoReceiver.initRunnable(handlerMain, LoginActivity.this,
+                        new Thread(NetInfoReceiver.initRunnable(handlerMain, LoginActivity.this,
                                 editName.getText().toString(), editPassWord.getText().toString())).start();
 
                         if (null != mTimerTask)
@@ -167,15 +167,15 @@ public class LoginActivity extends AppCompatActivity {
                         mTimer.cancel();
                 }
 
-            }else if (msg.what == WifiInfoReceiver.LOGIN_SUCCESS) {
+            }else if (msg.what == NetInfoReceiver.LOGIN_SUCCESS) {
                 btnLogin.setText("登录成功,再次点击退出");
-            } else if (msg.what == WifiInfoReceiver.USERNAME_ERROR) {
+            } else if (msg.what == NetInfoReceiver.USERNAME_ERROR) {
                 editName.setError("用户名错误");
-            } else if (msg.what == WifiInfoReceiver.PASSWORD_ERROR) {
+            } else if (msg.what == NetInfoReceiver.PASSWORD_ERROR) {
                 editPassWord.setError("密码错误");
-            }else if (msg.what == WifiInfoReceiver.FLOWLIMIT_ERROR){
+            }else if (msg.what == NetInfoReceiver.FLOWLIMIT_ERROR){
                 editPassWord.setError("本月流量已用完");
-            }else if (msg.what == WifiInfoReceiver.UNSURE) {
+            }else if (msg.what == NetInfoReceiver.UNSURE) {
                 btnLogin.setText("可能登录上了，你试试呗~");
             }
         }

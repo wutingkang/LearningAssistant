@@ -3,6 +3,7 @@ package zyb.org.editschedule;
 import temp.MyApplication;
 import zyb.org.androidschedule.R;
 import zyb.org.service.RemindReceiver;
+import zyb.org.setClassRoomSite.SetClassroomSite;
 import zyb.org.version.VersionActivity;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -29,14 +30,12 @@ import android.widget.Toast;
 public class SetActivity extends Activity {
 
 	//声明一个SharedPreferences对象，用来保存switch组件的开关信息
-	private SharedPreferences preferences = null;
-	//editor对象用来向preferences中写入数据
-	private SharedPreferences.Editor editor = null;
+	private SharedPreferences spsSwitch = null;
+	private SharedPreferences.Editor spsEditorSwitch = null;
 
-	//声明一个SharedPreferences对象，用来保存time_choice的值
-	private SharedPreferences pre = null;
-	//pre_editor对象用来向pre中写入数据
-	private SharedPreferences.Editor pre_editor = null;
+	//声明一个SharedPreferences对象，用来保存TimeChoice的值
+	private SharedPreferences spsTimeChoice = null;
+	private SharedPreferences.Editor spsEditorTimeChoice = null;
 
 	//声明一个AlarmManager对象，用来开启课前提醒服务
 	private AlarmManager alarmManager = null;
@@ -51,6 +50,7 @@ public class SetActivity extends Activity {
 
 	private Switch switch_quietButton;
 	private Switch switch_remindButton;
+	private Switch switchInClassQuietButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,19 +76,22 @@ public class SetActivity extends Activity {
 		TextView backButton = (TextView)findViewById(R.id.backtoMainButton);
 		switch_quietButton = (Switch)findViewById(R.id.switch_quiet);
 		switch_remindButton = (Switch)findViewById(R.id.switch_remind);
+		switchInClassQuietButton = (Switch)findViewById(R.id.switch_in_class_quiet);
 
 		//这里模式一定要设置为MODE_MULTI_PROCESS，否则即使相应的xml文件中数据有更新，RemindReceiver中也不能获取更新后的数据，而是一直获取上次的数据， 除非清空缓存
-		this.pre = SetActivity.this.getSharedPreferences("time", Context.MODE_MULTI_PROCESS);
-		this.pre_editor = pre.edit();
+		this.spsTimeChoice = SetActivity.this.getSharedPreferences("time", Context.MODE_MULTI_PROCESS);
+		this.spsEditorTimeChoice = spsTimeChoice.edit();
 
 		//指定该SharedPreferences数据可以跨进称调用
-		this.preferences = SetActivity.this.getSharedPreferences("switch", Context.MODE_MULTI_PROCESS);
-		this.editor = preferences.edit();
-		//每次创建该activity时，从preferences中读取switch_quietButton和switch_remindButton的开关信息的数据
-		Boolean quiet_status = preferences.getBoolean("switch_quiet", false);
-		Boolean remind_status = preferences.getBoolean("switch_remind", false);
+		this.spsSwitch = SetActivity.this.getSharedPreferences("switch", Context.MODE_MULTI_PROCESS);
+		this.spsEditorSwitch = spsSwitch.edit();
+		//每次创建该activity时，从preferences中读取开关信息的数据
+		Boolean quiet_status = spsSwitch.getBoolean("switch_quiet", false);
+		Boolean remind_status = spsSwitch.getBoolean("switch_remind", false);
+		Boolean inClassQuietStatus = spsSwitch.getBoolean("switch_in_class_quiet", false);
 		switch_quietButton.setChecked(quiet_status);
 		switch_remindButton.setChecked(remind_status);
+		switchInClassQuietButton.setChecked(inClassQuietStatus);
 
 		//为返回按钮绑定监听器
 		backButton.setOnClickListener(new OnClickListener() {
@@ -113,24 +116,24 @@ public class SetActivity extends Activity {
 
 				if(isChecked){
 					if(startService(intent) != null)
-						Toast.makeText(SetActivity.this, "成功开启，上课期间的来电将自动转为振动模式", 3000).show();
+						Toast.makeText(SetActivity.this, "成功开启，上课期间的来电将自动转为振动模式", Toast.LENGTH_SHORT).show();
 					else{
-						Toast.makeText(SetActivity.this, "未能成功开启，请重新尝试", 3000).show();
+						Toast.makeText(SetActivity.this, "未能成功开启，请重新尝试", Toast.LENGTH_SHORT).show();
 						switch_quietButton.setChecked(false);
 					}
 				}
 				else{
 					if(stopService(intent))
-						Toast.makeText(SetActivity.this, "成功关闭，恢复到原来的响铃模式", 3000).show();
+						Toast.makeText(SetActivity.this, "成功关闭，恢复到原来的响铃模式", Toast.LENGTH_SHORT).show();
 					else{
-						Toast.makeText(SetActivity.this, "未能成功关闭，请重新尝试", 3000).show();
+						Toast.makeText(SetActivity.this, "未能成功关闭，请重新尝试", Toast.LENGTH_SHORT).show();
 						switch_quietButton.setChecked(true);
 					}
 					audioManager.setRingerMode(orgRingerMode);
 				}
 				//将开关信息数据保存进preferences中
-				SetActivity.this.editor.putBoolean("switch_quiet", isChecked);
-				editor.commit();
+				SetActivity.this.spsEditorSwitch.putBoolean("switch_quiet", isChecked);
+				spsEditorSwitch.commit();
 			}
 		});
 
@@ -146,11 +149,21 @@ public class SetActivity extends Activity {
 					alarmManager.cancel(pi);
 				}
 				//将开关信息数据保存进preferences中
-				SetActivity.this.editor.putBoolean("switch_remind", isChecked);
-				editor.commit();
+				SetActivity.this.spsEditorSwitch.putBoolean("switch_remind", isChecked);
+				spsEditorSwitch.commit();
 			}
 		});
 
+		//开启开关后，只在有 有效网络连接且能得到位置信息 的情况下才开启根据教室位置静音功能
+		switchInClassQuietButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+				//将开关信息数据保存进preferences中
+				SetActivity.this.spsEditorSwitch.putBoolean("switch_in_class_quiet", isChecked);
+				spsEditorSwitch.commit();
+			}
+		});
 	}
 
 	@Override
@@ -199,11 +212,11 @@ public class SetActivity extends Activity {
 				public void onClick(DialogInterface dialog, int which) {
 //					System.out.println("SetActivity:" + time_choice);
 					if(time_choice == 0){
-						Toast.makeText(SetActivity.this, "请选择课前提醒的时间", 3000).show();
+						Toast.makeText(SetActivity.this, "请选择课前提醒的时间", Toast.LENGTH_SHORT).show();
 						switch_remindButton.setChecked(false);
 					}else{
-						SetActivity.this.pre_editor.putInt("time_choice", time_choice);
-						pre_editor.commit();
+						SetActivity.this.spsEditorTimeChoice.putInt("time_choice", time_choice);
+						spsEditorTimeChoice.commit();
 						//从当前时间开始，每隔一分钟启动一次pi指定的组件，即发送一次广播
 						alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, pi);
 						Toast.makeText(SetActivity.this, "设置成功，系统将在课前" + time_choice + "分钟提醒您", Toast.LENGTH_LONG).show();
@@ -226,12 +239,13 @@ public class SetActivity extends Activity {
 	}
 
 
-	//如果点击“版本支持”的TextView，则跳转
-	public void click_version(View v){
+	public void clickVision(View v){
 		Intent intent = new Intent(SetActivity.this, VersionActivity.class);
 		startActivity(intent);
 	}
-	public void click_revision(View v){
-		Log.i("MyDebug", "revision");
+
+	public void clickSetClassroomSite(View v){
+		Intent intent = new Intent(SetActivity.this, SetClassroomSite.class);
+		startActivity(intent);
 	}
 }

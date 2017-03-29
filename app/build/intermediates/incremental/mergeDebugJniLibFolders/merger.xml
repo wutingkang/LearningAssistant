@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\jniLibs"><file name="armeabi/libBMapApiEngine_v1_3_3.so" path="E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\jniLibs\armeabi\libBMapApiEngine_v1_3_3.so"/></source></dataSet><dataSet config="debug"><source path="E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\debug\jniLibs"/></dataSet></merger>

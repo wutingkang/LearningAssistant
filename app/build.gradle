@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    compile files('libs/baidumapapi.jar') //百度地图api
     compile 'com.android.support:support-v4:24.1.0'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'//加上

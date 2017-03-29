@@ -3,33 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-<!--  
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#90FF00">
-<Button 
-    android:id="@+id/backtoMainButton" 
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="10sp"
-    android:layout_weight="1"
-    android:text="@string/back" />    
-<TextView 
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content" 
-    android:text="@string/set"
-    android:textSize="20sp"
-    android:layout_weight="8"
-    android:gravity="center"/>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="5"
-    android:textSize="15sp" />
-</LinearLayout>
--->
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -62,64 +35,104 @@
             android:textSize="19sp" >
         </TextView>
     </FrameLayout>
-<LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/edit_background" > 
- <TextView
-    android:layout_width="match_parent"
-	android:layout_height="30dip"
-	android:paddingLeft="10dp"
-	android:gravity="center_vertical|left"
-	android:text="@string/message_set"
-	android:textColor="#888800"
-	android:textSize="15sp"
-	android:background="@drawable/tab_bar" />  
-	
-<Switch
-    android:id="@+id/switch_quiet"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="10dp"
-    android:text="@string/quiet"
-    android:textColor="#058"
-    android:textSize="20sp" />
-	
-<TextView
-    android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:textSize="10sp" />         
-<Switch
-    android:id="@+id/switch_remind"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="10dp"
-    android:text="@string/remind"
-    android:textColor="#058"
-    android:textSize="20sp"  />	
-<TextView
-    android:layout_width="match_parent"
-	android:layout_height="20dip" />  	
- <TextView
-    android:layout_width="match_parent"
-	android:layout_height="30dip"
-	android:paddingLeft="10dp"
-	android:gravity="center_vertical|left"
-	android:text="@string/about_app"
-	android:textColor="#888800"
-	android:textSize="15sp"
-	android:background="@drawable/tab_bar" />   	
-<TextView
-    android:id="@+id/about_revision"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:paddingLeft="10dp"    
-    android:text="@string/revision"
-    android:textSize="20sp"
-    android:clickable="true" 
-    android:textColor="#058"
-    android:onClick="click_version" />
 
-</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@drawable/edit_background" >
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="30dip"
+			android:paddingLeft="10dp"
+			android:gravity="center_vertical|left"
+			android:text="@string/message_set"
+			android:textColor="#0d0d0d"
+			android:textSize="15sp"
+			android:background="@drawable/tab_bar" />
+
+		<Switch
+			android:id="@+id/switch_quiet"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:text="@string/quiet"
+			android:textColor="#058"
+			android:textSize="20sp" />
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="10sp" />
+		<Switch
+			android:id="@+id/switch_remind"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:text="@string/remind"
+			android:textColor="#058"
+			android:textSize="20sp"  />
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="10sp" />
+		<Switch
+			android:id="@+id/switch_in_class_quiet"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:text="@string/in_classroom_quiet"
+			android:textColor="#058"
+			android:textSize="20sp"  />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="20dip" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="30dip"
+			android:paddingLeft="10dp"
+			android:gravity="center_vertical|left"
+			android:text="@string/set_in_classroom_quiet"
+			android:textColor="#0e0e0e"
+			android:textSize="15sp"
+			android:background="@drawable/tab_bar" />
+		<TextView
+			android:id="@+id/set_classroom_site"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:text="@string/set_classroom_site"
+			android:textSize="20sp"
+			android:clickable="true"
+			android:textColor="#058"
+			android:onClick="clickSetClassroomSite" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="10sp" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="30dip"
+			android:paddingLeft="10dp"
+			android:gravity="center_vertical|left"
+			android:text="@string/about_app"
+			android:textColor="#0e0e0e"
+			android:textSize="15sp"
+			android:background="@drawable/tab_bar" />
+		<TextView
+			android:id="@+id/about_revision"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:text="@string/revision"
+			android:textSize="20sp"
+			android:clickable="true"
+			android:textColor="#058"
+			android:onClick="clickVision" />
+
+	</LinearLayout>
+
 </LinearLayout>

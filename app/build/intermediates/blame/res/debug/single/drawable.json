@@ -32,24 +32,24 @@
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
-        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ver_bg.png",
-        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\ver_bg.png"
-    },
-    {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ver_bg.png",
+        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\ver_bg.png"
     },
     {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
-        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\top_bar_reg_d.png",
-        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\top_bar_reg_d.png"
-    },
-    {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\top_bar_reg_d.png",
+        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\top_bar_reg_d.png"
     },
     {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
