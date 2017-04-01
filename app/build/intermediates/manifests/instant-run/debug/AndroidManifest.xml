@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zyb.org.androidschedule"
+    package="zyb.wutingkang.androidschedule"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -37,17 +37,17 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name="zyb.org.login.LoginActivity"
+            android:name="zyb.wutingkang.login.LoginActivity"
             android:label="@string/login_name"
             android:theme="@style/MyLoginAppTheme" >
         </activity>
         <activity
-            android:name="zyb.org.setClassRoomSite.SetClassroomSite"
+            android:name="zyb.wutingkang.setClassRoomSite.SetClassroomSite"
             android:label="@string/set_classroom_site"
             android:theme="@style/MyLoginAppTheme" >
         </activity>
 
-        <receiver android:name="zyb.org.login.NetInfoReceiver" >
+        <receiver android:name="zyb.wutingkang.login.NetInfoReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
@@ -56,7 +56,7 @@
         </receiver>
 
         <activity
-            android:name="zyb.org.androidschedule.MainActivity"
+            android:name="zyb.wutingkang.androidschedule.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,31 +65,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="zyb.org.editschedule.SetActivity"
+            android:name="zyb.wutingkang.editschedule.SetActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="zyb.org.version.VersionActivity"
+            android:name="zyb.wutingkang.version.VersionActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="zyb.org.editschedule.RemindActivity"
+            android:name="zyb.wutingkang.editschedule.RemindActivity"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
 
         <receiver
-            android:name="zyb.org.service.RemindReceiver"
+            android:name="zyb.wutingkang.service.RemindReceiver"
             android:process=":remote" >
         </receiver>
         <receiver
-            android:name="zyb.org.service.LauncherReceiver"
+            android:name="zyb.wutingkang.service.LauncherReceiver"
             android:process=":remote" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <service android:name="zyb.org.service.SetQuietService" >
+        <service android:name="zyb.wutingkang.service.SetQuietService" >
             <intent-filter>
                 <action android:name="zyb.org.service.QUIET_SERVICE" />
             </intent-filter>

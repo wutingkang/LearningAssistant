@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zyb.org.androidschedule.test">
+    package="zyb.wutingkang.mainface.test">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
 
     <application>
         <uses-library android:name="android.test.runner" />
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="zyb.org.androidschedule"
+                     android:targetPackage="zyb.wutingkang.mainface"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for zyb.org.androidschedule"/>
+                     android:label="Tests for zyb.wutingkang.mainface"/>
 </manifest>

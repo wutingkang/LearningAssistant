@@ -15,6 +15,9 @@
     <string name="in_classroom_quiet">开启进入教室静音</string>
     <string name="set_in_classroom_quiet">进入教室自动静音设置</string>
     <string name="set_classroom_site">设置教室位置</string>
+    <string name="atitude_and_longitude">教室的经纬度：</string>
+    <string name="classroom_site">详细位置：</string>
+    <string name="get_classroom_site">设置当前位置为教室位置</string>
     <string name="about_app">软件相关</string>
     <string name="revision">版本支持</string>  
     <string name="us">关于作者</string>                   

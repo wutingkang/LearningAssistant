@@ -1,8 +1,8 @@
 package temp;
 
 import java.util.Calendar;
-import zyb.org.androidschedule.MainActivity;
-import zyb.org.androidschedule.R;
+import zyb.wutingkang.mainface.MainActivity;
+import zyb.wutingkang.mainface.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.TimePickerDialog;

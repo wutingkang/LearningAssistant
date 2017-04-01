@@ -64,7 +64,6 @@
             android:layout_gravity="center_vertical|center"
             android:gravity="center"
             android:text="@string/login"
-            android:textColor="#000000"
             android:textSize="19sp" >
         </TextView>
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 //MyApplication类用来存储每一个activity，并实现关闭所有activity的操作
 public class MyApplication extends Application {
@@ -12,6 +13,18 @@ public class MyApplication extends Application {
 	//定义容activity容器
 	private List<Activity> activityList = new LinkedList<Activity>();
 	private static MyApplication instance;
+
+	private static Context context;
+
+	@Override
+	public void onCreate(){
+		context = getApplicationContext();
+	}
+
+	public static Context getContext(){
+		return context;
+	}
+
 
 	private MyApplication(){}
 	//单例设计模式中取得唯一的MyApplication实例

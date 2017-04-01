@@ -5,9 +5,9 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "zyb.org.androidschedule"
+        applicationId "zyb.wutingkang.mainface"
         minSdkVersion 14
-        targetSdkVersion 17
+        targetSdkVersion 19
     }
 
     buildTypes {

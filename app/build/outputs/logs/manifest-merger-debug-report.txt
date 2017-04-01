@@ -108,26 +108,26 @@ uses-library#android.test.runner
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:36:10-60
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:36:24-58
-activity#zyb.org.login.LoginActivity
+activity#zyb.wutingkang.login.LoginActivity
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:38:9-42:20
 	android:label
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:40:13-47
 	android:theme
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:41:13-51
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:39:13-55
-activity#zyb.org.setClassRoomSite.SetClassroomSite
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:39:13-62
+activity#zyb.wutingkang.setClassRoomSite.SetClassroomSite
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:44:9-48:20
 	android:label
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:46:13-55
 	android:theme
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:47:13-51
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:45:13-69
-receiver#zyb.org.login.NetInfoReceiver
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:45:13-76
+receiver#zyb.wutingkang.login.NetInfoReceiver
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:50:9-56:20
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:50:19-63
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:50:19-70
 intent-filter#android.net.conn.CONNECTIVITY_CHANGE+android.net.wifi.STATE_CHANGE+android.net.wifi.WIFI_STATE_CHANGED
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:51:13-55:29
 action#android.net.conn.CONNECTIVITY_CHANGE
@@ -142,7 +142,7 @@ action#android.net.wifi.STATE_CHANGE
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:54:17-72
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:54:25-69
-activity#zyb.org.androidschedule.MainActivity
+activity#zyb.wutingkang.mainface.MainActivity
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:58:9-65:20
 	android:label
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:60:13-45
@@ -158,46 +158,46 @@ category#android.intent.category.LAUNCHER
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:63:17-77
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:63:27-74
-activity#zyb.org.editschedule.SetActivity
+activity#zyb.wutingkang.edits.SetActivity
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:66:9-69:20
 	android:label
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:68:13-45
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:67:13-60
-activity#zyb.org.version.VersionActivity
+activity#zyb.wutingkang.version.VersionActivity
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:70:10-73:20
 	android:label
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:72:13-45
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:71:13-59
-activity#zyb.org.editschedule.RemindActivity
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:71:13-66
+activity#zyb.wutingkang.edits.RemindActivity
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:74:9-77:20
 	android:theme
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:76:13-56
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:75:13-63
-receiver#zyb.org.service.RemindReceiver
+receiver#zyb.wutingkang.service.RemindReceiver
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:78:9-81:20
 	android:process
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:80:13-38
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:79:13-58
-receiver#zyb.org.service.LauncherReceiver
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:79:13-65
+receiver#zyb.wutingkang.service.LauncherReceiver
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:82:10-88:20
 	android:process
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:84:13-38
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:83:13-60
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:83:13-67
 intent-filter#android.intent.action.BOOT_COMPLETED
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:85:13-87:29
 action#android.intent.action.BOOT_COMPLETED
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:86:17-78
 	android:name
 		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:86:25-76
-service#zyb.org.service.SetQuietService
+service#zyb.wutingkang.service.SetQuietService
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:89:9-94:19
 	android:name
-		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:90:13-59
+		ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:90:13-66
 intent-filter#zyb.org.service.QUIET_SERVICE
 ADDED from E:\androidkaifa\Testapp\WtkLearningAssistant\app\src\main\AndroidManifest.xml:91:13-93:29
 action#zyb.org.service.QUIET_SERVICE

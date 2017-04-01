@@ -1,11 +1,11 @@
 package temp;
-import zyb.org.androidschedule.MainActivity;
-import zyb.org.androidschedule.R;
+import zyb.wutingkang.mainface.MainActivity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.widget.Adapter;
+
 public class MyAdapter {
 
 	private Context context;
@@ -20,8 +20,7 @@ public class MyAdapter {
 		main=(MainActivity) context;
 	}
 	public void test(){
-	
-	
+
 			
 	}
 	
