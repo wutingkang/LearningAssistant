@@ -1,8 +1,11 @@
 package zyb.org.setClassRoomSite;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import zyb.org.androidschedule.R;
@@ -33,21 +36,39 @@ import com.baidu.mapapi.MKWalkingRouteResult;
 
 public class SetClassroomSite extends Activity{
     //声明一个SharedPreferences对象，用来保存教室经度纬度信息
-    private SharedPreferences spsSwitch = null;
-    private SharedPreferences.Editor spsEditorSwitch = null;
+    public SharedPreferences spsLocation = null;
+    public SharedPreferences.Editor spsEditorLocation = null;
 
     private TextView tv1, tv2;
-    private BMapManager mapManager;
-    private MKLocationManager locationManager;
+    public static BMapManager mapManager;
+    public static MKLocationManager locationManager;
+
+    private Button btnSetClassroomSite;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_classrom_site);
+        btnSetClassroomSite = (Button)findViewById(R.id.button3);
         tv1 = (TextView) findViewById(R.id.result1);
         tv2 = (TextView) this.findViewById(R.id.result2);
 
-        mapManager = new BMapManager(this);
+
+        btnSetClassroomSite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+
+    }
+
+    public static double [] getLocation(Context context){
+
+        mapManager = new BMapManager(context);
         locationManager = mapManager.getLocationManager();
 
         mapManager.init("53351EE4BDE7BD870F41A0B4AF1480F1CA97DAF9",
@@ -60,10 +81,33 @@ public class SetClassroomSite extends Activity{
 
         mapManager.start();
 
+        return null;
     }
 
+    // 常用事件监听，用来处理通常的网络错误，授权验证错误等
+    static class MyMKGeneralListener implements MKGeneralListener {
+
+        @Override
+        public void onGetNetworkState(int arg0) {
+            if (arg0 == MKEvent.ERROR_NETWORK_CONNECT)
+                Toast.makeText(context, "您的网络出错啦！",
+                        Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onGetPermissionState(int arg0) {
+
+            if (arg0 == MKEvent.ERROR_PERMISSION_DENIED) {
+                Toast.makeText(SetClassroomSite.this, "API KEY 错误，请检查！",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
+
+
     // 定位自己的位置，只定位一次
-    class MyLocationListener implements LocationListener {
+    static class MyLocationListener implements LocationListener {
 
         @Override
         public void onLocationChanged(Location arg0) {
@@ -71,10 +115,14 @@ public class SetClassroomSite extends Activity{
             double jingdu1 = arg0.getLatitude();
             double weidu1 = arg0.getLongitude();
 
+
+
+
             int jingdu = (int) (arg0.getLatitude() * 1000000);
             int weidu = (int) (arg0.getLongitude() * 1000000);
             tv1.setText("经度：" + jingdu1 + ",纬度：" + weidu1);
             System.out.println("经度：" + jingdu1 + ",纬度：" + weidu1);
+
             MKSearch search = new MKSearch();
             search.init(mapManager, new MyMKSearchListener());
             search.reverseGeocode(new GeoPoint(jingdu, weidu));
@@ -82,7 +130,7 @@ public class SetClassroomSite extends Activity{
 
     }
 
-    class MyMKSearchListener implements MKSearchListener {
+    static class MyMKSearchListener implements MKSearchListener {
 
         @Override
         public void onGetAddrResult(MKAddrInfo arg0, int arg1) {
@@ -133,26 +181,7 @@ public class SetClassroomSite extends Activity{
 
     }
 
-    // 常用事件监听，用来处理通常的网络错误，授权验证错误等
-    class MyMKGeneralListener implements MKGeneralListener {
 
-        @Override
-        public void onGetNetworkState(int arg0) {
-            if (arg0 == MKEvent.ERROR_NETWORK_CONNECT)
-                Toast.makeText(SetClassroomSite.this, "您的网络出错啦！",
-                        Toast.LENGTH_LONG).show();
-        }
-
-        @Override
-        public void onGetPermissionState(int arg0) {
-
-            if (arg0 == MKEvent.ERROR_PERMISSION_DENIED) {
-                Toast.makeText(SetClassroomSite.this, "API KEY 错误，请检查！",
-                        Toast.LENGTH_LONG).show();
-            }
-        }
-
-    }
 
     public void onDestroy() {
         super.onDestroy();
