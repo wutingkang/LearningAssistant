@@ -18,7 +18,8 @@ import zyb.wutingkang.mainface.R;
  */
 
 public class SetClassroomSite extends Activity{
-    //声明一个SharedPreferences对象，用来保存教室经度纬度信息
+    //声明一个SharedPreferences对象，用来保存教室经度纬度信息，
+    //因为教学楼不一定只有一个，所以后可以改成添加多个位置信息
     public static SharedPreferences spsLocation = null;
     public static SharedPreferences.Editor spsEditorLocation = null;
 
@@ -38,8 +39,8 @@ public class SetClassroomSite extends Activity{
         spsLocation = SetClassroomSite.this.getSharedPreferences("LocationInfo", this.MODE_PRIVATE);
         spsEditorLocation = spsLocation.edit();
         if (null != spsLocation){
-            tv1.setText("经度：" + getDouble(spsLocation, "latitude", 0) +
-                      "\n纬度：" + getDouble(spsLocation, "longtitude", 0));
+            tv1.setText("old经度：" + getDouble(spsLocation, "latitude", 0) +
+                      "\nold纬度：" + getDouble(spsLocation, "longtitude", 0));
         }
 
 
@@ -61,33 +62,35 @@ public class SetClassroomSite extends Activity{
             Bundle bundle = msg.getData();
 
            if (msg.what == MyLocation.SHOWLOCATION) {
-                double latitude, longitude;
-                latitude = bundle.getDouble("latitude", 0);
-                longitude = bundle.getDouble("longitude", 0);
-                tv1.setText("new经度：" + latitude + "\nnew纬度：" + longitude);
-
-                putDouble(spsEditorLocation, "latitude", latitude);
-                putDouble(spsEditorLocation, "longtitude", longitude);
-                spsEditorLocation.apply();
 
                 String strLocation;
                 strLocation = bundle.getString("strLocation", "");
                 if (null != strLocation){
-                    tv2.setText(strLocation);
+
+                    double latitude, longitude;
+                    latitude = bundle.getDouble("latitude", 0);
+                    longitude = bundle.getDouble("longitude", 0);
+                    tv1.setText("now经度：" + latitude + "\nnow纬度：" + longitude);
+
+                    putDouble(spsEditorLocation, "latitude", latitude);
+                    putDouble(spsEditorLocation, "longtitude", longitude);
+                    spsEditorLocation.apply();
+
+                    tv2.setText(strLocation + "\n\n\n                             设置成功！");
                 }else{
-                    tv2.setText("没有获取想要的位置");
+                    tv2.setText("设置失败，请确保当前网络可用。");
                 }
-            }
+           }
         }
     };
 
     //SharedPreferences不能存储double数据，但是这样就可以了
     //参考：http://stackoverflow.com/questions/16319237/cant-put-double-sharedpreferences
-    private Editor putDouble(final Editor edit, final String key, final double value) {
+    public static Editor putDouble(final Editor edit, final String key, final double value) {
         return edit.putLong(key, Double.doubleToRawLongBits(value));
     }
 
-    private double getDouble(final SharedPreferences prefs, final String key, final double defaultValue) {
+    public static double getDouble(final SharedPreferences prefs, final String key, final double defaultValue) {
         return Double.longBitsToDouble(prefs.getLong(key, Double.doubleToLongBits(defaultValue)));
     }
 

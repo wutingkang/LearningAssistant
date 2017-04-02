@@ -119,6 +119,11 @@ public class LoginActivity extends AppCompatActivity {
                     WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
                     WifiInfo wifiInfo = wifiManager.getConnectionInfo();
 
+                    //调试
+                    System.out.print("wifi name:" +  wifiInfo.getSSID());
+
+                    //以下判断有效是建立在不同种类的wifi名称不重复，还有不是特殊名称（如：<UNKNOWN SSID>）的情况下
+
                     //因为登录的用户名密码只对校园网有效，就直接根据wifi名称判断是否需要连接。
                     //可以增加需登录的wifi名单增删改功能，避免随便向未知网络发送自己的用户名密码，提高安全性
                     if (wifiInfo.getSSID().equals("\"405\"") || wifiInfo.getSSID().equals("\"403\"") ||
@@ -143,7 +148,12 @@ public class LoginActivity extends AppCompatActivity {
                             mTimerTask.cancel();
                         if (null != mTimer)
                             mTimer.cancel();
-                    } else {
+                    } else if ((! wifiInfo.getSSID().equals("\"<UNKNOWN SSID>\"")) &&
+                              ((! wifiInfo.getSSID().equals("\"OX\"")))){
+                        //因为isNetworkAvailable（）判断的是网络是否连接上，所以
+                        //有可能是在数据打开的情况下打开wifi,这时还未来得及连上任何wifi，但网络状态却可用，注意括号里面有“！”
+
+                        //后续可以添加提醒是否加入免/需登录wifi名单的功能
                         btnLogin.setText("连接到白名单之外的:" + wifiInfo.getSSID());
                         LOGIN_STATE = UN_LOGIN;
                     }

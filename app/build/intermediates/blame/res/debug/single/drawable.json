@@ -132,12 +132,12 @@
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\drawable\\design_ic_visibility.xml"
     },
     {
-        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
-    },
-    {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_bar.png",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\tab_bar.png"
+    },
+    {
+        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",

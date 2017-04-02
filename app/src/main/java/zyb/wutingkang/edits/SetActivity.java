@@ -2,6 +2,7 @@ package zyb.wutingkang.edits;
 
 import temp.MyApplication;
 import zyb.wutingkang.mainface.R;
+import zyb.wutingkang.service.InClassRoomQuietService;
 import zyb.wutingkang.service.RemindReceiver;
 import zyb.wutingkang.setClassRoomSite.SetClassroomSite;
 import zyb.wutingkang.version.VersionActivity;
@@ -39,7 +40,7 @@ public class SetActivity extends Activity {
 	//声明一个AlarmManager对象，用来开启课前提醒服务
 	private AlarmManager alarmManager = null;
 	//声明一个PendingIntent对象，用来指定alarmManager要启动的组件
-	private PendingIntent pi = null;
+	private PendingIntent piRemind = null;
 	private Intent alarm_receiver = null;
 
 	//定义单选列表对话狂的id，该对话框用于显示课前提醒时间的可选项
@@ -62,14 +63,14 @@ public class SetActivity extends Activity {
 		final AudioManager audioManager = (AudioManager)getSystemService(Service.AUDIO_SERVICE);
 		//从MainAcivity中获取原始设置的铃声模式
 		Intent intent = getIntent();
-		final int orgRingerMode = intent.getIntExtra("mode_ringer", AudioManager.RINGER_MODE_NORMAL);
+		final int primaryRingerMode = intent.getIntExtra("mode_ringer", AudioManager.RINGER_MODE_NORMAL);
 		//获取系统的闹钟定时服务
 		alarmManager = (AlarmManager)getSystemService(Service.ALARM_SERVICE);
 
 		//指定alarmManager要启动的组件
-		alarm_receiver = new Intent(SetActivity.this,RemindReceiver.class);
+		alarm_receiver = new Intent(SetActivity.this, RemindReceiver.class);
 //		alarm_receiver.putExtra("anvance_remindtime", time_choice);
-		pi = PendingIntent.getBroadcast(SetActivity.this, 0, alarm_receiver, 0);
+		piRemind = PendingIntent.getBroadcast(SetActivity.this, 0, alarm_receiver, 0);
 
 		//取出各组件
 		TextView backButton = (TextView)findViewById(R.id.backtoMainButton);
@@ -122,13 +123,14 @@ public class SetActivity extends Activity {
 					}
 				}
 				else{
-					if(stopService(intent))
+					if(stopService(intent)){
 						Toast.makeText(SetActivity.this, "成功关闭，恢复到原来的响铃模式", Toast.LENGTH_SHORT).show();
+					}
 					else{
 						Toast.makeText(SetActivity.this, "未能成功关闭，请重新尝试", Toast.LENGTH_SHORT).show();
 						switch_quietButton.setChecked(true);
 					}
-					audioManager.setRingerMode(orgRingerMode);
+					audioManager.setRingerMode(primaryRingerMode);
 				}
 				//将开关信息数据保存进preferences中
 				SetActivity.this.spsEditorSwitch.putBoolean("switch_quiet", isChecked);
@@ -145,7 +147,7 @@ public class SetActivity extends Activity {
 					showDialog(SINGLE_DIALOG);
 				}
 				else{
-					alarmManager.cancel(pi);
+					alarmManager.cancel(piRemind);
 				}
 				//将开关信息数据保存进preferences中
 				SetActivity.this.spsEditorSwitch.putBoolean("switch_remind", isChecked);
@@ -153,14 +155,51 @@ public class SetActivity extends Activity {
 			}
 		});
 
-		//开启开关后，只在有 有效网络连接且能得到位置信息 的情况下才开启根据教室位置静音功能
+		//开启开关后，就算当前没有连接网络也会自动联网获取地理位置，因为半夜一般不在教室，这段时间可以过滤掉
 		switchInClassQuietButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+             //必须是在已经设置教室位置的情况下才执行
+             SharedPreferences spsLocation = SetActivity.this.getSharedPreferences("LocationInfo", SetActivity.this.MODE_PRIVATE);
+             if (null != spsLocation){
+                 if (0 != SetClassroomSite.getDouble(spsLocation, "latitude", 0)){
 
-				//将开关信息数据保存进preferences中
-				SetActivity.this.spsEditorSwitch.putBoolean("switch_in_class_quiet", isChecked);
-				spsEditorSwitch.commit();
+                     //启动自动静音的service
+                     Intent intent = new Intent();
+                     intent.setAction("zyb.wutingkang.service.InClassRoomQuietService");
+
+                     if(isChecked){
+                         if(startService(intent) != null)
+                             Toast.makeText(SetActivity.this, "成功开启，进入教室后会自动静音", Toast.LENGTH_SHORT).show();
+                         else{
+                             Toast.makeText(SetActivity.this, "未能成功开启，请重新尝试", Toast.LENGTH_SHORT).show();
+                             switchInClassQuietButton.setChecked(false);
+                         }
+                     }
+                     else{
+                         if(stopService(intent))
+                             Toast.makeText(SetActivity.this, "成功关闭，进入教室不会自动静音", Toast.LENGTH_SHORT).show();
+                         else{
+                             Toast.makeText(SetActivity.this, "未能成功关闭，请重新尝试", Toast.LENGTH_SHORT).show();
+                             switchInClassQuietButton.setChecked(true);
+                         }
+						 audioManager.setRingerMode(primaryRingerMode);
+
+						 InClassRoomQuietService.IS_IN_CLASSROOM = false;//关闭此服务时要确保SetQuietService也能开启
+                     }
+
+                     //将开关信息数据保存进preferences中
+                     SetActivity.this.spsEditorSwitch.putBoolean("switch_in_class_quiet", isChecked);
+                     spsEditorSwitch.commit();
+
+                 } else {
+                     switchInClassQuietButton.setChecked(false);
+                     Toast.makeText(SetActivity.this, "请先设置教室位置", Toast.LENGTH_SHORT).show();
+                 }
+             } else {
+                 switchInClassQuietButton.setChecked(false);
+                 Toast.makeText(SetActivity.this, "请先设置教室位置", Toast.LENGTH_SHORT).show();
+             }
 			}
 		});
 	}
@@ -217,7 +256,7 @@ public class SetActivity extends Activity {
 						SetActivity.this.spsEditorTimeChoice.putInt("time_choice", time_choice);
 						spsEditorTimeChoice.commit();
 						//从当前时间开始，每隔一分钟启动一次pi指定的组件，即发送一次广播
-						alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, pi);
+						alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, piRemind);
 						Toast.makeText(SetActivity.this, "设置成功，系统将在课前" + time_choice + "分钟提醒您", Toast.LENGTH_LONG).show();
 					}
 				}

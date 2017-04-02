@@ -40,7 +40,7 @@ public class MyLocation {
     public static int SHOWLOCATION = 1;
     public static int LOCATION_TYPE = LATITUDE_AND_LONGITUDE;
 
-    MyLocation(Context context, Handler hander){
+    public MyLocation(Context context, Handler hander){ //要加public，否则外包的InClassRoomQuietService不能使用
         LOCATION_TYPE = LATITUDE_AND_LONGITUDE;
         this.context = context;
         this.myHandler = hander;
@@ -91,7 +91,7 @@ public class MyLocation {
     static class MyLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location arg0) {
-            //两种方式都需哟啊经纬度信息
+            //两种方式都需要经纬度信息
             myBundle.putDouble("latitude", arg0.getLatitude());
             myBundle.putDouble("longitude", arg0.getLongitude());
 
