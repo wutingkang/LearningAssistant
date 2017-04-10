@@ -50,7 +50,7 @@
         <activity
             android:name="doit.wutingkang.setClassRoomSite.SetClassroomSite"
             android:label="@string/set_classroom_site"
-            android:theme="@style/HaveTitleTheme">
+            android:theme="@style/NoTitleTheme">
         </activity>
 
         <receiver android:name="doit.wutingkang.login.WifiInfoReceiver">

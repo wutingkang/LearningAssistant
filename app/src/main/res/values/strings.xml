@@ -20,6 +20,7 @@
     <string name="set_in_classroom_quiet">进入教室自动静音设置</string>
     <string name="set_classroom_site">设置教室位置</string>
     <string name="set_classroom_radius">设置教室半径：</string>
+    <string name="radius_limit">10米到200米之间</string>
     <string name="atitude_and_longitude">教室的经纬度：</string>
     <string name="classroom_site">详细位置：</string>
     <string name="get_classroom_site">设置当前位置为教室位置</string>

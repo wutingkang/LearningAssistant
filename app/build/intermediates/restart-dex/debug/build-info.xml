@@ -5,29 +5,29 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="180199284713315"
+    timestamp="205608082032039"
     token="7230233893796984094"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="307" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="109" />
+        duration="0" />
     <task
         name="verifier"
-        duration="21" />
+        duration="0" />
 
     <artifact
         location="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="180199284713315"
+        timestamp="205608082032039"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\outputs\apk\app-debug.apk"

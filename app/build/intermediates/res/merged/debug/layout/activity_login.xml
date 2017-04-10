@@ -14,16 +14,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:background="#022cfc"
+        android:background="@drawable/top_bar_middle"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingRight="2dip" >
 
         <TextView
             android:id="@+id/exitLoginButton"
             android:layout_width="60dip"
             android:layout_height="35dip"
             android:layout_gravity="center_vertical|left"
-            android:background="@drawable/login_back"
+            android:background="@drawable/top_bar_back"
             android:gravity="center_vertical"
             android:paddingLeft="20dip"
             android:text="@string/exit"
@@ -34,6 +35,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dip"
+            android:layout_marginLeft="30dp"
             android:layout_gravity="center_vertical|right"
             android:orientation="horizontal">
 
@@ -60,7 +62,7 @@
                 android:id="@+id/freeLoginButton"
                 android:layout_width="80dip"
                 android:layout_height="50dip"
-                android:layout_gravity="center_vertical|center"
+                android:layout_marginLeft="30dp"
                 android:gravity="center"
                 android:text="@string/freeLoginWifis"
                 android:textSize="16sp" >

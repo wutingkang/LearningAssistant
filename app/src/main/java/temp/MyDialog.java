@@ -5,6 +5,8 @@ import java.util.Calendar;
 import doit.wutingkang.login.LoginActivity;
 import doit.wutingkang.mainface.MainActivity;
 import doit.wutingkang.mainface.R;
+import doit.wutingkang.setClassRoomSite.SetClassroomSite;
+
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.TimePickerDialog;
@@ -320,6 +322,68 @@ public class MyDialog {
 				});
 		builder.create().show();
 
+	}
+
+	/*
+    * 输入教室半径的对话框
+    */
+	public void setClassroomRadius(){
+		//填装对话框的view
+		inflater = LayoutInflater.from(context);
+		view = inflater.inflate(R.layout.classroom_radius,null);
+
+		final EditText etClassroomRadius = (EditText)view.findViewById(R.id.classroom_radius);
+
+		builder = new AlertDialog.Builder(context)
+				.setIcon(R.drawable.ic_launcher)
+				.setTitle("设置教室半径")
+				.setView(view)
+				.setPositiveButton("确认",new OnClickListener(){
+
+					@SuppressWarnings("deprecation")
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+
+						String radius;
+						int int_radius;
+
+						if(! (radius = etClassroomRadius.getText().toString()).equals("")) {
+
+							//判断输入是否合法
+							try {
+								int_radius = Integer.parseInt(radius);
+							} catch (NumberFormatException e) {
+								Toast.makeText(context, "请输入整形数字！", Toast.LENGTH_SHORT).show();
+								e.printStackTrace();
+								return;
+							}
+
+							//判断是否在限制的范围内
+							if (10 < int_radius && 200 > int_radius){
+								SetClassroomSite.CLASSROOM_RADIUS = int_radius;
+							}else {
+								Toast.makeText(context, "输入半径不能在限制范围内！", Toast.LENGTH_SHORT).show();
+								return;
+							}
+
+						}
+						else {
+							Toast.makeText(context, "输入半径不能为空！", Toast.LENGTH_SHORT).show();
+							return;
+						}
+
+					}
+
+				})
+				.setNegativeButton("取消", new OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+
+					}
+
+				});
+		builder.create().show();
 	}
 
 	private void findWidgetes(){

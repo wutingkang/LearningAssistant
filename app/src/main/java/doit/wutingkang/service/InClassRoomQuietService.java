@@ -33,7 +33,6 @@ public class InClassRoomQuietService extends Service {
     private boolean SERVICE_OPEN_NETWORK = false; //标示是否是服务自己打开网络，如果不是这在使用完网络后不能关闭网络
     private AudioManager audioManager;
     private int primaryRingerMode;
-    private final double MAX_CLASSROOM_RADIUS = 80.0;//默认教室最大半径（米），可以添加让用户自选的动能
 
     @Override
     public IBinder onBind(Intent arg0){
@@ -138,7 +137,7 @@ public class InClassRoomQuietService extends Service {
                 int currentRingerMode = audioManager.getRingerMode();
                 //获取当前位置与教室位置的距离
                 double distance = getDistence(classroomLatitude, classroonLongitude, nowLatitude, nowLongitude);
-                if (distance < MAX_CLASSROOM_RADIUS){ //教室范围内
+                if (distance < SetClassroomSite.CLASSROOM_RADIUS){ //教室范围内
                     IS_IN_CLASSROOM = true;
 
                     if(currentRingerMode != AudioManager.RINGER_MODE_VIBRATE){
