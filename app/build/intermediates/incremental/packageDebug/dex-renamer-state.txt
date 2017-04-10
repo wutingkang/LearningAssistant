@@ -1,4 +1,4 @@
-#Sun Apr 02 13:08:09 CST 2017
+#Mon Apr 10 13:56:14 CST 2017
 base.0=E\:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=E\:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

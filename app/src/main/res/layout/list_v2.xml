@@ -10,10 +10,10 @@
         android:layout_width="30dp"
         android:layout_height="fill_parent"
         android:layout_weight="8.91"
-        android:background="#888800"
+        android:background="#3afa00"
         android:gravity="center"
         android:text="id"
-        android:textColor="#004499"
+        android:textColor="#080808"
         tools:ignore="HardcodedText,InefficientWeight" />
 
     <TableLayout

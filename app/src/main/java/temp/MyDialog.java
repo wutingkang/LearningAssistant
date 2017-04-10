@@ -1,15 +1,16 @@
 package temp;
 
 import java.util.Calendar;
-import zyb.wutingkang.mainface.MainActivity;
-import zyb.wutingkang.mainface.R;
+
+import doit.wutingkang.login.LoginActivity;
+import doit.wutingkang.mainface.MainActivity;
+import doit.wutingkang.mainface.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -32,22 +33,24 @@ public class MyDialog {
 	private Context context;
 	private LayoutInflater inflater;
 	private Builder builder;
-	MyAdapter adapter;
-	MainActivity main;
-	String s1="",s2="",s3="",s4="",s5="",s6="",s7="";
+
+	private MainActivity main;
+	private String s1="",s2="",s3="",s4="",s5="",s6="",s7="";
+
 
 	public MyDialog(Context context){
-		this.context=context;
-		main=(MainActivity) context;
-		adapter=new MyAdapter(context);
+		this.context = context;
+		main = (MainActivity) context;
 	}
+
+
 	/*
     * 点击未编辑的课程列表跳出”添加课程“对话框
     */
 	public void add(final int day,final int n){
 		//填装对话框的view
-		inflater=LayoutInflater.from(context);
-		view=inflater.inflate(R.layout.edit_shedule,null);
+		inflater = LayoutInflater.from(context);
+		view = inflater.inflate(R.layout.edit_shedule,null);
 		findWidgetes();//取部件
 		final Button course_time1=(Button)view.findViewById(R.id.time1);
 		final Button course_time2=(Button)view.findViewById(R.id.time2);
@@ -67,7 +70,7 @@ public class MyDialog {
 			}
 		});
 
-		builder=new AlertDialog.Builder(context)
+		builder = new AlertDialog.Builder(context)
 				.setIcon(R.drawable.ic_launcher)
 				.setTitle("编辑课程信息")
 				.setView(view)
@@ -84,19 +87,19 @@ public class MyDialog {
 						if(!(s7=course_time2.getText().toString()).equals("")) ;
 
 						if((s5=course_count.getText().toString()).equals("")||s1.equals("")) {
-							Toast.makeText(context, "请正确输入课程及节数！", 3000).show();
+							Toast.makeText(context, "请正确输入课程及节数！", Toast.LENGTH_SHORT).show();
 							return;
 						}
 						else {
 							int i=Integer.parseInt(s5.trim());//i为节数
 							for(int m=0;m<i;m++){
-								MainActivity.db.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+								MainActivity.dataBase.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 							}
 
 						}
 
 						main.cursor[day].requery();
-						main.list[day].invalidate();
+						main.listViews[day].invalidate();
 					}
 
 				})
@@ -154,7 +157,7 @@ public class MyDialog {
 		view.invalidate();
 
 
-		builder=new AlertDialog.Builder(context)
+		builder = new AlertDialog.Builder(context)
 				.setIcon(R.drawable.ic_launcher)
 				.setTitle("修改课程信息")
 				.setView(view)
@@ -173,32 +176,32 @@ public class MyDialog {
 						main.cursor[day].moveToPosition(n);
 						int n1=Integer.parseInt(main.cursor[day].getString(7).trim());//课程的总节数
 						int n2=Integer.parseInt(main.cursor[day].getString(8).trim());//选中的为该课程的第几节
-						Log.i("kkk",main.cursor[day].getString(7));
+						//Log.i("kkk",main.cursor[day].getString(7));
 						//如果没有再次输入节数或节数没有变化，根据选中的为第几节更新前后节的数据即可
 						if(s5.equals("")||n1==Integer.parseInt(s5.trim())) {
 							switch(n2){
 								case 0:
 									for(int m=0;m<n1;m++){
-										MainActivity.db.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+										MainActivity.dataBase.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 									}
 									break;
 
 								case 1:
-									MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
+									MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
 									for(int m=1;m<n1;m++){
-										MainActivity.db.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+										MainActivity.dataBase.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 									}
 									break;
 								case 2:
-									MainActivity.db.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
-									MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
+									MainActivity.dataBase.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
+									MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
 									for(int m=2;m<n1;m++){
-										MainActivity.db.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+										MainActivity.dataBase.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 									}
 									break;
 								case 3:
 									for(int m=n2;m>=0;m--){
-										MainActivity.db.update(day,n-m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(n2-m));
+										MainActivity.dataBase.update(day,n-m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(n2-m));
 									}
 									break;
 							}
@@ -213,26 +216,26 @@ public class MyDialog {
 								switch(n2){//更新数据
 									case 0:
 										for(int m=0;m<n3;m++){
-											MainActivity.db.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 
 									case 1:
-										MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
+										MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
 										for(int m=1;m<n3;m++){
-											MainActivity.db.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 									case 2:
-										MainActivity.db.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
-										MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
+										MainActivity.dataBase.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
+										MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
 										for(int m=2;m<n3;m++){
-											MainActivity.db.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 									case 3:
 										for(int m=n2;m>=0;m--){
-											MainActivity.db.update(day,n-m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(n2-m));
+											MainActivity.dataBase.update(day,n-m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(n2-m));
 										}
 										break;
 								}
@@ -243,30 +246,30 @@ public class MyDialog {
 								switch(n2){//删除
 									case 0:
 										for(int m=0;m<n1;m++){
-											MainActivity.db.deleteData(day,n+m+1);
+											MainActivity.dataBase.deleteData(day,n+m+1);
 										}
 										break;
 
 									case 1:
-										MainActivity.db.deleteData(day,n);
+										MainActivity.dataBase.deleteData(day,n);
 										for(int m=1;m<n1;m++){
-											MainActivity.db.deleteData(day,n+m);
+											MainActivity.dataBase.deleteData(day,n+m);
 										}
 										break;
 									case 2:
-										MainActivity.db.deleteData(day,n-1);
-										MainActivity.db.deleteData(day,n);
+										MainActivity.dataBase.deleteData(day,n-1);
+										MainActivity.dataBase.deleteData(day,n);
 										for(int m=2;m<n1;m++){
-											MainActivity.db.deleteData(day,n+m-1);
+											MainActivity.dataBase.deleteData(day,n+m-1);
 										}
 										break;
 									case 3:
 										for(int m=n2;m>=0;m--){
-											MainActivity.db.deleteData(day,n-m+1);
+											MainActivity.dataBase.deleteData(day,n-m+1);
 										}
 										break;
 									default:
-										Toast.makeText(context, "error", 3000).show();
+										Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
 										break;
 								}
 
@@ -274,26 +277,26 @@ public class MyDialog {
 								switch(n2){//更新数据
 									case 0:
 										for(int m=0;m<n3;m++){
-											MainActivity.db.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m+1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 
 									case 1:
-										MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
+										MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"0");
 										for(int m=1;m<n3;m++){
-											MainActivity.db.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 									case 2:
-										MainActivity.db.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
-										MainActivity.db.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
+										MainActivity.dataBase.update(day,n-1,s1,s2,s3,s4,s5,s6,s7,"0");
+										MainActivity.dataBase.update(day,n,s1,s2,s3,s4,s5,s6,s7,"1");
 										for(int m=2;m<n3;m++){
-											MainActivity.db.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m-1,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 									case 3:
 										for(int m=0;m<n3;m++){
-											MainActivity.db.update(day,n+m-2,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
+											MainActivity.dataBase.update(day,n+m-2,s1,s2,s3,s4,s5,s6,s7,Integer.toString(m));
 										}
 										break;
 								}
@@ -301,7 +304,7 @@ public class MyDialog {
 							}
 						}
 						main.cursor[day].requery();
-						main.list[day].invalidate();
+						main.listViews[day].invalidate();
 
 					}
 
@@ -320,13 +323,13 @@ public class MyDialog {
 	}
 
 	private void findWidgetes(){
-		course_name=(EditText)view.findViewById(R.id.editText1);
-		course_address=(EditText)view.findViewById(R.id.editText2);
-		course_teacher=(EditText)view.findViewById(R.id.editText3);
-		course_week=(EditText)view.findViewById(R.id.editText4);
+		course_name = (EditText)view.findViewById(R.id.editText1);
+		course_address = (EditText)view.findViewById(R.id.editText2);
+		course_teacher = (EditText)view.findViewById(R.id.editText3);
+		course_week = (EditText)view.findViewById(R.id.editText4);
 //		course_time1=(EditText)view.findViewById(R.id.time1);
 //		course_time2=(EditText)view.findViewById(R.id.time2);
-		course_count=(EditText)view.findViewById(R.id.jieshu);
+		course_count = (EditText)view.findViewById(R.id.jieshu);
 	}
 
 	public void TimeSet_Dialog(final TextView text){

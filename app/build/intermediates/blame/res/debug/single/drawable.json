@@ -124,6 +124,10 @@
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
+        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_back.png",
+        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\src\\main\\res\\drawable\\login_back.png"
+    },
+    {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_ic_search_api_material.xml"
     },

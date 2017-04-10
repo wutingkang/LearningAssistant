@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zyb.wutingkang.mainface"
+    package="doit.wutingkang.mainface"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,6 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
+    <!-- 有关网络的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
@@ -22,33 +23,37 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 读取电话状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
 	<!-- 授予程序访问振动器的权限 -->
 	<uses-permission android:name="android.permission.VIBRATE"/>
 	<!-- 授予程序访问系统开机事件的权限 -->
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>	
 	
     <application
-        android:label="@string/app_name"
         android:icon="@drawable/mydog"
         android:allowBackup="true"
-        android:theme="@style/ConcealTitle"
+        android:theme="@style/NoTitleTheme"
         android:supportsRtl="true">
-         <uses-library android:name="android.test.runner"/>
+        <uses-library android:name="android.test.runner"/>
 
         <activity
-            android:name="zyb.wutingkang.login.LoginActivity"
-            android:label="@string/login_name"
-            android:theme="@style/MyLoginAppTheme">
+            android:name="doit.wutingkang.login.LoginActivity"
+            android:theme="@style/NoTitleTheme"
+            android:launchMode="singleInstance">
+        </activity>
+
+        <activity android:name="doit.wutingkang.freeClassroom.FreeClassroom"
+            android:label="@string/freeClassroom"
+            android:theme="@style/HaveTitleTheme"
+            android:launchMode="singleInstance">
         </activity>
 
         <activity
-            android:name="zyb.wutingkang.setClassRoomSite.SetClassroomSite"
+            android:name="doit.wutingkang.setClassRoomSite.SetClassroomSite"
             android:label="@string/set_classroom_site"
-            android:theme="@style/MyLoginAppTheme">
+            android:theme="@style/HaveTitleTheme">
         </activity>
 
-        <receiver android:name="zyb.wutingkang.login.NetInfoReceiver">
+        <receiver android:name="doit.wutingkang.login.WifiInfoReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
@@ -57,7 +62,7 @@
         </receiver>
 
         <activity
-            android:name="zyb.wutingkang.mainface.MainActivity"
+            android:name="doit.wutingkang.mainface.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,23 +70,23 @@
             </intent-filter>
         </activity>        
         <activity
-            android:name="zyb.wutingkang.edits.SetActivity"
+            android:name="doit.wutingkang.edits.SetActivity"
             android:label="@string/app_name" >        
         </activity>
          <activity
-            android:name="zyb.wutingkang.version.VersionActivity"
+            android:name="doit.wutingkang.version.VersionActivity"
             android:label="@string/app_name" >        
         </activity>       
         <activity 
-            android:name="zyb.wutingkang.edits.RemindActivity"
+            android:name="doit.wutingkang.edits.RemindActivity"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <receiver 
-            android:name="zyb.wutingkang.service.RemindReceiver"
+            android:name="doit.wutingkang.service.RemindReceiver"
             android:process=":remote"> 
         </receiver>
          <receiver 
-            android:name="zyb.wutingkang.service.LauncherReceiver"
+            android:name="doit.wutingkang.service.LauncherReceiver"
             android:process=":remote"> 
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -89,16 +94,16 @@
         </receiver>
 
         <service 
-            android:name="zyb.wutingkang.service.SetQuietService" >
+            android:name="doit.wutingkang.service.SetQuietService" >
             <intent-filter>
-                <action android:name="zyb.wutingkang.service.QUIET_SERVICE" />
+                <action android:name="doit.wutingkang.service.QUIET_SERVICE" />
             </intent-filter>         
         </service>
 
         <service
-            android:name="zyb.wutingkang.service.InClassRoomQuietService" >
+            android:name="doit.wutingkang.service.InClassRoomQuietService" >
             <intent-filter>
-                <action android:name="zyb.wutingkang.service.InClassRoomQuietService" />
+                <action android:name="doit.wutingkang.service.InClassRoomQuietService" />
             </intent-filter>
         </service>
     </application>

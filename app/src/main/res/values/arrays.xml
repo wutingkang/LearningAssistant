@@ -16,4 +16,12 @@
         <item >50分钟</item>
         <item >60分钟</item>               
     </string-array>
+    <string-array name="set_classroomRadius">
+        <item >50米</item>
+        <item >60米</item>
+        <item >70米</item>
+        <item >80米</item>
+        <item >90米</item>
+        <item >100米</item>
+    </string-array>
 </resources>

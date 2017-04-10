@@ -2,11 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:background="@drawable/edit_background"
+
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/top_bar_middle"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="2dip" >
+
+        <TextView
+            android:id="@+id/exitClassRoomSetButton"
+            android:layout_width="60dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical|left"
+            android:background="@drawable/top_bar_back"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dip"
+            android:text="@string/exit"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dip"
+                android:gravity="center_vertical|center"
+                android:text="@string/set_classroom_radius"
+                android:textColor="#0a0909"
+                android:textSize="15sp"
+                />
+
+           <android.support.v7.widget.AppCompatSpinner
+               android:id="@+id/classRoom_radius"
+               android:layout_gravity="center_vertical"
+               android:layout_width="wrap_content"
+               android:layout_height="30dip"
+               android:entries="@arrays/set_classroomRadius" >
+           </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:text="@string/atitude_and_longitude"
@@ -29,6 +76,7 @@
         android:textSize="20sp"
         android:textStyle="normal|bold"
         android:textColor="@android:color/background_dark" />
+
 
     <TextView
         android:id="@+id/result2"
