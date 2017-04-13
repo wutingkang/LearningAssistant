@@ -160,7 +160,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="3302179ba7d077f9c8a4ff01216c5b68be78dd81">
+        sha1="ebdf2f64a3d1087756d326ec74ba7e3968bd6b99">
         <dex dex="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\pre-dexed\debug\instant-run_269eae2a3b840fedc954dc1ac762ca9a3d5a26f7.jar" />
     </item>
     <item
@@ -291,21 +291,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="f3a6590e720b42e155d71ca150e3006bbcd7f223">
-        <dex dex="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_e84c0e3f53dd13a71db7e2d5df84fd242bfec3b9.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
         <dex dex="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_16cae3d53460711125fa26ba7ccea65ca1c30aae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e174f47a821ac83bc5fcafd10eaf223c91d83229">
+        <dex dex="E:\androidkaifa\Testapp\WtkLearningAssistant\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_e84c0e3f53dd13a71db7e2d5df84fd242bfec3b9.jar" />
     </item>
     <item
         is-multidex="false"

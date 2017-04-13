@@ -11,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import doit.wutingkang.mainface.R;
-import temp.MyDialog;
+import doit.wutingkang.learningAssistant.R;
+import temp.SetDialog;
 
 /**
  * Created by King_Tom_user_name on 2017/3/29.
@@ -62,9 +62,13 @@ public class SetClassroomSite extends AppCompatActivity {
                     case 3: CLASSROOM_RADIUS = 80; break;
                     case 4: CLASSROOM_RADIUS = 90; break;
                     case 5: CLASSROOM_RADIUS = 100; break;
-                    case 6: new MyDialog(SetClassroomSite.this).setClassroomRadius(); //自定义输入半径
+                    case 6: new SetDialog(SetClassroomSite.this).setClassroomRadius();
+                        //有bug:
+                        break;//自定义输入半径,别忘了break
                     default: break;
                 }
+
+                radiusSpinner.setSelection(position, true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {

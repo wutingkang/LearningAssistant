@@ -23,5 +23,6 @@
         <item >80米</item>
         <item >90米</item>
         <item >100米</item>
+        <item >输入半径</item>
     </string-array>
 </resources>

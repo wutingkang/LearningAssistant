@@ -56,12 +56,12 @@
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item.xml"
-    },
-    {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item.xml"
     },
     {
         "merged": "E:\\androidkaifa\\Testapp\\WtkLearningAssistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",

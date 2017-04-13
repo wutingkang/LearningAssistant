@@ -29,6 +29,7 @@
     <string name="us">关于作者</string>                   
     <string name="login">登录校网</string>
     <string name="freeClassroom">空闲教室</string>
+    <string name="schoolType">查询本部空闲教室</string>
     <string name="exit">退出</string> 
     <string name="back">返回</string>     
     <string name="edit_title">课程信息</string> 

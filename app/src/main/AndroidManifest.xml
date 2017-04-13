@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="doit.wutingkang.mainface"
+    package="doit.wutingkang.learningAssistant"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -42,14 +42,12 @@
         </activity>
 
         <activity android:name="doit.wutingkang.freeClassroom.FreeClassroom"
-            android:label="@string/freeClassroom"
-            android:theme="@style/HaveTitleTheme"
+            android:theme="@style/NoTitleTheme"
             android:launchMode="singleInstance">
         </activity>
 
         <activity
             android:name="doit.wutingkang.setClassRoomSite.SetClassroomSite"
-            android:label="@string/set_classroom_site"
             android:theme="@style/NoTitleTheme">
         </activity>
 
@@ -62,7 +60,7 @@
         </receiver>
 
         <activity
-            android:name="doit.wutingkang.mainface.MainActivity"
+            android:name="doit.wutingkang.learningAssistant.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

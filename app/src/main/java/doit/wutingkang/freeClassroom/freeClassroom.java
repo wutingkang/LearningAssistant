@@ -2,11 +2,14 @@ package doit.wutingkang.freeClassroom;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.TextView;
 
-import doit.wutingkang.mainface.R;
+import doit.wutingkang.learningAssistant.R;
 
 /**
  * Created by King_Tom_user_name on 2017/4/2.
@@ -14,13 +17,40 @@ import doit.wutingkang.mainface.R;
 
 public class FreeClassroom extends AppCompatActivity {
     private WebView myWebView;
+    private TextView backButton;
+    private Button changeSchool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freeclassroom);
 
+        backButton = (TextView) findViewById(R.id.backWebButton);
+        changeSchool = (Button)findViewById(R.id.changSchoolButton);
         myWebView = (WebView) findViewById(R.id.free_classroom);
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        changeSchool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (changeSchool.getText().equals("查询本部空闲教室")){
+                    myWebView.loadUrl("http://jwxt.bupt.edu.cn/zxqDtKxJas.jsp");
+                    changeSchool.setText("查询宏福空闲教室");
+                }else {
+                    myWebView.loadUrl("http://jwxt.bupt.edu.cn/hfxqDtKxJas.jsp");
+                    changeSchool.setText("查询本部空闲教室");
+                }
+
+            }
+        });
 
         // 设置WebView的客户端
         myWebView.setWebViewClient(new WebViewClient(){

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="doit.wutingkang.mainface.test">
+    package="doit.wutingkang.learningAssistant.test">
 
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="doit.wutingkang.mainface"
+                     android:targetPackage="doit.wutingkang.learningAssistant"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for doit.wutingkang.mainface"/>
+                     android:label="Tests for doit.wutingkang.learningAssistant"/>
 </manifest>

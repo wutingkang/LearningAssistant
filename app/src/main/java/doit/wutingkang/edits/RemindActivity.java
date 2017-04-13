@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 
-import doit.wutingkang.mainface.R;
+import doit.wutingkang.learningAssistant.R;
 
 public class RemindActivity extends Activity
 {

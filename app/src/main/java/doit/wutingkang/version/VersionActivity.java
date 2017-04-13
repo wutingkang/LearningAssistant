@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import temp.MyApplication;
-import doit.wutingkang.mainface.R;
+import doit.wutingkang.learningAssistant.R;
 
 public class VersionActivity extends Activity {
 

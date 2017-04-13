@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "doit.wutingkang.mainface"
+        applicationId "doit.wutingkang.learningAssistant"
         minSdkVersion 14
         targetSdkVersion 19
     }

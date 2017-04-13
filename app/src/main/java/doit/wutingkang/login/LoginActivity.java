@@ -24,8 +24,8 @@ import org.json.JSONArray;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import doit.wutingkang.mainface.R;
-import temp.WifiListDialog;
+import doit.wutingkang.learningAssistant.R;
+import temp.SetDialog;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -81,14 +81,14 @@ public class LoginActivity extends AppCompatActivity {
         btnNeedLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new WifiListDialog(LoginActivity.this).showWifiList(NEED_lOGINWIFILIST);
+                new SetDialog(LoginActivity.this).showWifiList(NEED_lOGINWIFILIST);
             }
         });
 
         btnFreeLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new WifiListDialog(LoginActivity.this).showWifiList(FREE_LOGINWIFILIST);
+                new SetDialog(LoginActivity.this).showWifiList(FREE_LOGINWIFILIST);
             }
         });
 

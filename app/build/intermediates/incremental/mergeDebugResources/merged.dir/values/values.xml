@@ -14,6 +14,7 @@
         <item>80米</item>
         <item>90米</item>
         <item>100米</item>
+        <item>输入半径</item>
     </string-array>
     <string-array name="set_remind">
         <item>5分钟</item>
@@ -52,6 +53,7 @@
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="colorAccent">#f92020</color>
+    <color name="colorInput">#efd806</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
@@ -616,6 +618,7 @@
     <string name="radius_limit">10米到200米之间</string>
     <string name="remind">开启课前振动提醒</string>
     <string name="revision">版本支持</string>
+    <string name="schoolType">查询本部空闲教室</string>
     <string name="search_menu_title">Search</string>
     <string name="set">设置</string>
     <string name="set_classroom_radius">设置教室半径：</string>

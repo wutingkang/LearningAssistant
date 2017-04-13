@@ -33,7 +33,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import doit.wutingkang.mainface.R;
+import doit.wutingkang.learningAssistant.R;
 
 import static android.media.AudioManager.RINGER_MODE_VIBRATE;
 

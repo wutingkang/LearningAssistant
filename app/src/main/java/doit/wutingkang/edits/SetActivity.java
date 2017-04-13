@@ -25,7 +25,7 @@ import doit.wutingkang.service.RemindReceiver;
 import doit.wutingkang.setClassRoomSite.SetClassroomSite;
 import doit.wutingkang.version.VersionActivity;
 import temp.MyApplication;
-import doit.wutingkang.mainface.R;
+import doit.wutingkang.learningAssistant.R;
 
 public class SetActivity extends Activity {
 

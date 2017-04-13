@@ -48,7 +48,7 @@
                android:layout_gravity="center_vertical"
                android:layout_width="110dip"
                android:layout_height="40dip"
-               android:background="#00fc04"
+               android:background="#0df111"
                android:spinnerMode="dialog"
                android:entries="@array/set_classroomRadius" >
            </android.support.v7.widget.AppCompatSpinner>
